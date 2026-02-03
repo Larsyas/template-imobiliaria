@@ -1,0 +1,273 @@
+﻿---
+type Property = {
+  title: string
+  badge?: string
+  location: string
+  details: string
+  image?: string
+}
+
+type Props = {
+  items: Property[]
+  whatsapp: string
+  heading?: string
+  subheading?: string
+}
+
+const {
+  items,
+  whatsapp,
+  heading = 'Imóveis em Destaque',
+  subheading = 'Conheça algumas oportunidades selecionadas no mercado imobiliário de Itajaí.'
+} = Astro.props as Props
+
+const waBase = `https://wa.me/${whatsapp}`
+
+const splitDetails = (details: string) =>
+  details.split('•').map((part) => part.trim()).filter(Boolean)
+---
+
+<section class="section section-featured" id="imoveis">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-line" aria-hidden="true"></span>
+      <h2 class="section-title">{heading}</h2>
+      <p class="section-sub">{subheading}</p>
+    </div>
+
+    <div class="grid grid-3 featured-grid">
+      {items.map((p: Property) => {
+        const [beds, baths, area] = splitDetails(p.details)
+        const msg = `Olá! Tenho interesse em um imóvel do tipo "${p.title}" (${p.location}).\nDetalhes: ${p.details}.\nVocê pode me passar mais informações e opções semelhantes?`
+        const href = `${waBase}?text=${encodeURIComponent(msg)}`
+
+        return (
+          <article class="card property-card">
+            <div
+              class:list={['property-media', !p.image && 'is-placeholder']}
+              style={p.image ? `background-image: url(${p.image});` : undefined}
+            >
+              {p.badge && <span class="property-tag">{p.badge}</span>}
+            </div>
+
+            <div class="property-body">
+              <p class="property-location">
+                <span class="pin" aria-hidden="true"></span>
+                {p.location}
+              </p>
+
+              <h3 class="property-title">{p.title}</h3>
+
+              <ul class="property-meta" role="list">
+                {beds && (
+                  <li>
+                    <span class="meta-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 10h18a2 2 0 0 1 2 2v5H1v-5a2 2 0 0 1 2-2Z" />
+                        <path d="M7 10V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3" />
+                      </svg>
+                    </span>
+                    {beds}
+                  </li>
+                )}
+                {baths && (
+                  <li>
+                    <span class="meta-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 11h16" />
+                        <path d="M6 11V7a2 2 0 0 1 2-2h2" />
+                        <path d="M18 11v4a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4v-4" />
+                      </svg>
+                    </span>
+                    {baths}
+                  </li>
+                )}
+                {area && (
+                  <li>
+                    <span class="meta-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <path d="M7 7h.01M17 7h.01M7 17h.01M17 17h.01" />
+                      </svg>
+                    </span>
+                    {area}
+                  </li>
+                )}
+              </ul>
+
+              <a class="btn btn--whatsapp property-cta" href={href} target="_blank" rel="noopener">
+                Tenho Interesse
+              </a>
+            </div>
+          </article>
+        )
+      })}
+    </div>
+
+    <div class="featured-footer">
+      <p>Procura algo específico? Conte-me o que você precisa.</p>
+      <a
+        class="btn btn--primary"
+        href={`${waBase}?text=${encodeURIComponent('Olá! Estou procurando um imóvel em Itajaí. Pode me ajudar com algumas opções?')}`}
+        target="_blank"
+        rel="noopener"
+      >
+        Ver Mais Imóveis
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-featured {
+    padding-top: 70px;
+  }
+
+  .section-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 32px;
+  }
+
+  .section-line {
+    width: 52px;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--primary), rgba(212, 160, 23, 0.35));
+    display: inline-block;
+    margin-bottom: 12px;
+    box-shadow: 0 8px 20px rgba(212, 160, 23, 0.25);
+  }
+
+  .section-title {
+    margin: 0 0 8px;
+  }
+
+  .section-sub {
+    margin: 0 auto;
+    max-width: 60ch;
+  }
+
+  .featured-grid {
+    margin-top: 28px;
+  }
+
+  .property-card {
+    padding: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(14, 22, 40, 0.95), rgba(9, 15, 30, 0.9));
+  }
+
+  .property-media {
+    position: relative;
+    min-height: 190px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .property-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7, 11, 22, 0.2), rgba(7, 11, 22, 0.65));
+  }
+
+  .property-media.is-placeholder {
+    background-image:
+      radial-gradient(400px 240px at 20% 20%, rgba(40, 110, 190, 0.5), transparent 60%),
+      radial-gradient(300px 180px at 80% 40%, rgba(20, 70, 130, 0.55), transparent 65%),
+      linear-gradient(120deg, rgba(14, 24, 46, 0.9), rgba(8, 14, 26, 0.9));
+  }
+
+  .property-tag {
+    position: absolute;
+    z-index: 2;
+    top: 14px;
+    left: 14px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: rgba(212, 160, 23, 0.2);
+    border: 1px solid rgba(212, 160, 23, 0.45);
+    color: var(--primary-2);
+    text-transform: none;
+    backdrop-filter: blur(6px);
+  }
+
+  .property-body {
+    padding: 18px 18px 20px;
+  }
+
+  .property-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+
+  .property-location .pin {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--primary);
+    box-shadow: 0 0 0 4px rgba(212, 160, 23, 0.15);
+  }
+
+  .property-title {
+    margin: 0 0 10px;
+  }
+
+  .property-meta {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 16px;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .property-meta li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .meta-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--primary-2);
+    display: inline-flex;
+  }
+
+  .meta-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .property-cta {
+    width: 100%;
+    font-weight: 600;
+  }
+
+  .featured-footer {
+    margin-top: 28px;
+    text-align: center;
+  }
+
+  .featured-footer p {
+    margin: 0 0 14px;
+  }
+
+  @media (min-width: 820px) {
+    .property-media {
+      min-height: 210px;
+    }
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+const { whatsapp, city } = Astro.props
+const currentYear = new Date().getFullYear()
+const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent("Olá! Gostaria de saber mais sobre seus serviços imobiliários.")}`
+---
+<footer class="bg-card border-t border-border/50">
+  <div class="container-custom py-12 lg:py-16">
+    <div class="grid md:grid-cols-3 gap-10">
+      <div>
+        <div class="text-xl font-display font-semibold text-foreground mb-3">Itajaí Premium<span class="text-primary">.</span></div>
+        <p class="text-sm text-muted-foreground leading-relaxed">
+          Atendimento especializado em imóveis na região de {city}.
+        </p>
+      </div>
+
+      <div>
+        <div class="text-sm font-semibold text-foreground mb-3">Contato</div>
+        <div class="space-y-2 text-sm text-muted-foreground">
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">WhatsApp</a>
+          <div>{city}</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="text-sm font-semibold text-foreground mb-3">Atendimento</div>
+        <div class="space-y-2 text-sm text-muted-foreground">
+          <div>Seg a Sex: 8h às 18h</div>
+          <div>Sáb: 9h às 13h</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-border/50 flex flex-col sm:flex-row gap-3 items-center justify-between text-xs text-muted-foreground">
+      <div>© {currentYear} Itajaí Premium. Todos os direitos reservados.</div>
+      <div>Feito para performance e conversão.</div>
+    </div>
+  </div>
+</footer>

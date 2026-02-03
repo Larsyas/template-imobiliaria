@@ -1,0 +1,47 @@
+---
+const { featuredProperties, whatsapp } = Astro.props
+const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent("Olá! Tenho interesse em um imóvel e gostaria de mais informações.")}`
+const images = ["/assets/property-1.jpg","/assets/property-2.jpg","/assets/property-3.jpg"]
+---
+<section id="imoveis" class="section-padding">
+  <div class="container-custom">
+    <div class="text-center mb-12">
+      <h2 class="heading-section text-foreground mb-4">Imóveis em Destaque</h2>
+      <p class="text-muted-foreground max-w-2xl mx-auto">Seleção premium com foco em localização, potencial e qualidade.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {featuredProperties?.map((p, idx) => (
+        <article class="card-premium rounded-2xl overflow-hidden">
+          <div class="relative">
+            <img src={images[idx % images.length]} alt={p.title} class="w-full h-56 object-cover" loading="lazy" />
+            {p.badge && (
+              <div class="absolute top-4 left-4 bg-primary/90 text-background text-xs font-semibold px-3 py-1 rounded-full">
+                {p.badge}
+              </div>
+            )}
+          </div>
+
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-foreground mb-2">{p.title}</h3>
+            <div class="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+              <svg class="h-4 w-4 text-primary" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 21s-6-4.35-6-10a6 6 0 0 1 12 0c0 5.65-6 10-6 10Z" stroke="currentColor" stroke-width="2"/>
+                <circle cx="12" cy="11" r="2.5" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              <span>{p.location}</span>
+            </div>
+            <p class="text-sm text-muted-foreground mb-6">{p.details}</p>
+
+            <a class="btn-secondary w-full px-5 py-3 text-sm font-semibold inline-flex items-center justify-center gap-2" href={whatsappLink} target="_blank" rel="noopener noreferrer">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5A8.48 8.48 0 0 1 21 11v.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Quero saber mais</span>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

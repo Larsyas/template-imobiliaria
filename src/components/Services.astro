@@ -1,0 +1,28 @@
+---
+const { services } = Astro.props
+---
+<section id="servicos" class="section-padding bg-card/30">
+  <div class="container-custom">
+    <div class="text-center mb-12">
+      <h2 class="heading-section text-foreground mb-4">Serviços</h2>
+      <p class="text-muted-foreground max-w-2xl mx-auto">Do primeiro contato até a assinatura, eu conduzo cada etapa com clareza e segurança.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {services?.map((s) => (
+        <div class="card-premium rounded-2xl p-6 flex flex-col">
+          <h3 class="text-lg font-semibold text-foreground mb-2">{s.name}</h3>
+          <p class="text-sm text-muted-foreground mb-4">{s.desc}</p>
+          <ul class="space-y-2 mt-auto">
+            {s.items?.map((it) => (
+              <li class="text-sm text-muted-foreground flex gap-2">
+                <span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary"></span>
+                <span>{it}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

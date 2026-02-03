@@ -1,11 +1,30 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import data from "../content/site.json";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Services from "../components/Services.astro";
+import Properties from "../components/Properties.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp.astro";
+
+const { businessName, city, whatsapp } = data;
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title={businessName} description={data.hero?.subtitle}>
+  <Header whatsapp={whatsapp} />
+  <main>
+    <Hero hero={data.hero} whatsapp={whatsapp} city={city} stats={data.stats} />
+    <About about={data.about} highlights={data.highlights} />
+    <Services services={data.services} />
+    <Properties featuredProperties={data.featuredProperties} whatsapp={whatsapp} />
+    <Testimonials testimonials={data.testimonials} />
+    <Contact contact={data.contact} businessName={businessName} city={city} whatsapp={whatsapp} />
+  </main>
+  <Footer whatsapp={whatsapp} city={city} />
+  <FloatingWhatsApp whatsapp={whatsapp} />
+</BaseLayout>

@@ -1,0 +1,10 @@
+---
+const { whatsapp } = Astro.props
+const wa = `https://wa.me/${whatsapp}`
+---
+
+<div class="fab">
+  <a class="btn btn--whatsapp" href={wa} target="_blank" rel="noopener">
+    WhatsApp
+  </a>
+</div>

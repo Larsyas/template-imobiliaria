@@ -1,0 +1,30 @@
+---
+const { about, highlights } = Astro.props
+const icons = ["shield","heart","award","users"]
+---
+<section id="sobre" class="section-padding">
+  <div class="container-custom">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div>
+        <h2 class="heading-section text-foreground mb-6">{about?.title}</h2>
+        <div class="prose prose-invert max-w-none text-muted-foreground leading-relaxed">
+          {about?.text?.split("\n\n").map((p) => <p>{p}</p>)}
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        {highlights?.map((v, i) => (
+          <div class="card-premium p-6 rounded-2xl">
+            <div class="mb-4 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+              <svg class="h-6 w-6 text-primary" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-foreground mb-2">{v.label}</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">{v.value}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

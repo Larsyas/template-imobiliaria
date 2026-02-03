@@ -1,0 +1,132 @@
+{
+  "businessName": "Corretor de Imóveis em Itajaí",
+  "city": "Itajaí, Santa Catarina",
+  "whatsapp": "5547999999999",
+  "hero": {
+    "kicker": "Itajaí, Santa Catarina",
+    "title": "Corretor de Imóveis em Itajaí",
+    "subtitle": "Atendimento personalizado para compra, venda e avaliação de imóveis, com transparência, confiança e proximidade.",
+    "ctaPrimary": "Falar no WhatsApp",
+    "ctaSecondary": "Ver Imóveis em Destaque",
+    "rating": "5.0 no Google • Dezenas de clientes satisfeitos"
+  },
+  "about": {
+    "title": "Seu Parceiro na Jornada Imobiliária",
+    "text": "Atuo no mercado imobiliário de Itajaí com foco em oferecer um atendimento verdadeiramente personalizado. Cada cliente tem necessidades únicas, e meu compromisso é entender exatamente o que você busca.\n\nSeja para comprar, vender ou avaliar seu imóvel, você encontrará aqui um profissional dedicado a tornar todo o processo simples, transparente e seguro."
+  },
+  "highlights": [
+    {
+      "label": "Transparência",
+      "value": "Informações claras e documentadas"
+    },
+    {
+      "label": "Atendimento Próximo",
+      "value": "Disponível quando você precisar"
+    },
+    {
+      "label": "Experiência",
+      "value": "Atuação no mercado local"
+    },
+    {
+      "label": "Confiança",
+      "value": "Clientes satisfeitos"
+    }
+  ],
+  "stats": [
+    {
+      "value": "5.0",
+      "label": "Avaliação no Google"
+    },
+    {
+      "value": "50+",
+      "label": "Clientes satisfeitos"
+    },
+    {
+      "value": "100+",
+      "label": "Imóveis negociados"
+    },
+    {
+      "value": "Itajaí",
+      "label": "Especialização local"
+    }
+  ],
+  "services": [
+    {
+      "name": "Compra de Imóveis",
+      "desc": "Auxílio completo desde a busca até a entrega das chaves.",
+      "items": [
+        "Análise de necessidades",
+        "Visitas acompanhadas",
+        "Negociação segura"
+      ]
+    },
+    {
+      "name": "Venda de Imóveis",
+      "desc": "Estratégias de divulgação profissional para vender pelo melhor preço.",
+      "items": [
+        "Avaliação de mercado",
+        "Divulgação premium",
+        "Filtro de compradores"
+      ]
+    },
+    {
+      "name": "Avaliação Imobiliária",
+      "desc": "Avaliação técnica e precisa baseada no mercado atual.",
+      "items": [
+        "Análise comparativa",
+        "Relatório detalhado",
+        "Preço justo de mercado"
+      ]
+    },
+    {
+      "name": "Captação de Imóveis",
+      "desc": "Busca ativa de imóveis para clientes qualificados.",
+      "items": [
+        "Demanda real",
+        "Compradores prontos",
+        "Processo ágil"
+      ]
+    }
+  ],
+  "featuredProperties": [
+    {
+      "title": "Apartamento",
+      "badge": "Vista para o mar",
+      "location": "Centro, Itajaí",
+      "details": "3 quartos • 2 banheiros • 120m²"
+    },
+    {
+      "title": "Casa",
+      "badge": "Condomínio fechado",
+      "location": "Praia Brava, Itajaí",
+      "details": "4 quartos • 3 banheiros • 280m²"
+    },
+    {
+      "title": "Cobertura",
+      "badge": "Terraço com piscina",
+      "location": "Fazenda, Itajaí",
+      "details": "3 quartos • 2 banheiros • 180m²"
+    }
+  ],
+  "testimonials": [
+    {
+      "text": "Atendimento excepcional do início ao fim. Processo transparente e eficiente.",
+      "author": "Cliente satisfeito",
+      "location": "Itajaí, SC"
+    },
+    {
+      "text": "Profissional competente e sempre disponível para esclarecer dúvidas.",
+      "author": "Cliente satisfeito",
+      "location": "Itajaí, SC"
+    },
+    {
+      "text": "Recomendo pela honestidade e comprometimento em todas as etapas.",
+      "author": "Cliente satisfeito",
+      "location": "Itajaí, SC"
+    }
+  ],
+  "contact": {
+    "hours": "Seg a Sex: 8h às 18h | Sáb: 9h às 13h",
+    "creci": "CRECI: XXXXX/SC"
+  }
+}

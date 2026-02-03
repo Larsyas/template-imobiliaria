@@ -10,5 +10,12 @@
   },
   "dependencies": {
     "astro": "^5.17.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17",
+    "postcss": "^8.4.49",
+    "autoprefixer": "^10.4.20",
+    "@tailwindcss/typography": "^0.5.16",
+    "tailwindcss-animate": "^1.0.7"
   }
 }
