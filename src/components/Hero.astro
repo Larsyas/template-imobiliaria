@@ -28,15 +28,23 @@ const whatsappLink = `https://wa.me/${whatsapp}?text=${encodeURIComponent("Olá!
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 mb-10">
-        <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-primary px-8 py-4 text-base font-semibold inline-flex items-center justify-center gap-2">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M20 11.08a8 8 0 1 1-9-7.92" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M20 4v7h-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <a href={whatsappLink} target="_blank" rel="noopener noreferrer" class="btn-whatsapp btn-primary px-8 py-4 text-base font-semibold inline-flex items-center justify-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg"
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            stroke-width="2" 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            class="lucide lucide-message-circle-icon lucide-message-circle">
+            <path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/>
           </svg>
           <span>{hero?.ctaPrimary ?? "Falar no WhatsApp"}</span>
         </a>
 
-        <a href="#imoveis" class="btn-secondary px-8 py-4 text-base font-semibold inline-flex items-center justify-center gap-2">
+        <a href="#imoveis" class="btn-gold btn-secondary px-8 py-4 text-base font-semibold inline-flex items-center justify-center gap-2">
           <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             <path d="m19 12-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
